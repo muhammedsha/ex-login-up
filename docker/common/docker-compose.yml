@@ -4,25 +4,25 @@ version: '2'
 services:
     
     eurekaserver:
-           image: notix/eurekaserver:n1
-           ports:
-             - "8761:8761"
+        image: notix/eurekaserver:n1
+        ports:
+            - "8761:8761"
 
     configserver:
-           image: notix/configserver:n1
-           ports:
-             - "8888:8888"
+        image: notix/configserver:n1
+        ports:
+            - "8888:8888"
 
-           environment:
-                EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-                EUREKASERVER_PORT: "8761"
-                ENCRYPT_KEY:       "IMSYMMETRIC"
+        environment:
+            EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+            EUREKASERVER_PORT: "8761"
+            ENCRYPT_KEY:       "IMSYMMETRIC"
 
     employeeservice:
-          image: notix/employeeservice:n1
-          ports:
+        image: notix/employeeservice:n1
+        ports:
             - "8085:8085"
-          environment:
+        environment:
             PROFILE: "default"
             SERVER_PORT: "8085"
             CONFIGSERVER_URI: "http://configserver:8888"
@@ -31,15 +31,15 @@ services:
             CONFIGSERVER_PORT:   "8888"
 
             ENCRYPT_KEY:       "IMSYMMETRIC"
-          links:
-               - configserver
-               - eurekaserver
+        links:
+            - configserver
+            - eurekaserver
 
     empservice:
-          image: notix/empservice:n1
-          ports:
+        image: notix/empservice:n1
+        ports:
             - "8000:8000"
-          environment:
+        environment:
             PROFILE: "default"
             SERVER_PORT: "8000"
             CONFIGSERVER_URI: "http://configserver:8888"
@@ -48,15 +48,15 @@ services:
             CONFIGSERVER_PORT:   "8888"
 
             ENCRYPT_KEY:       "IMSYMMETRIC"
-          links:
-               - configserver
-               - eurekaserver
+        links:
+            - configserver
+            - eurekaserver
 
     loginservice:
-          image: notix/loginservice:n1
-          ports:
+        image: notix/loginservice:n1
+        ports:
             - "8005:8005"
-          environment:
+        environment:
             PROFILE: "default"
             SERVER_PORT: "8005"
             CONFIGSERVER_URI: "http://configserver:8888"
@@ -65,6 +65,6 @@ services:
             CONFIGSERVER_PORT:   "8888"
 
             ENCRYPT_KEY:       "IMSYMMETRIC"
-          links:
-               - configserver
-               - eurekaserver
+        links:
+            - configserver
+            - eurekaserver
