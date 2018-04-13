@@ -14,7 +14,7 @@ eureka:
         
 spring:
     application:
-        name: employeeservice
+        name: employee-service
     jpa:
       showSql: true
       

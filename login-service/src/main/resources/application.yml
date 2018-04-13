@@ -14,7 +14,7 @@ server:
     
 spring:
   application:
-    name: loginservice
+    name: login-service
   profiles:
     active:
       default

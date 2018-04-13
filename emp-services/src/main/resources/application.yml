@@ -2,7 +2,7 @@
 ---
 spring:
     application:
-        name: empservice
+        name: emp-service
     profiles:
         active:
             default
