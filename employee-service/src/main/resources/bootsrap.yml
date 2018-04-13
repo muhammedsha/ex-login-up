@@ -1,0 +1,10 @@
+## YAML Template.
+---
+spring:
+   
+    profiles:
+    active:
+      default
+    cloud:
+    config:
+      enabled: true

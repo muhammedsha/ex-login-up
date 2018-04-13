@@ -1,0 +1,11 @@
+## YAML Template.
+---
+eurekaserver:
+       image: notix/eurekaserver:n1
+       ports:
+         - "8761:8761"
+       
+confgserver:
+       image: notix/configserver:n1
+       ports:
+         - "8888:8888"
