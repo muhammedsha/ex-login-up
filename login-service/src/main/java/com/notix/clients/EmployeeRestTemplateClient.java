@@ -24,7 +24,7 @@ public class EmployeeRestTemplateClient {
     public Employee getEmployee(String empId){
         ResponseEntity<Employee> restExchange =
                 restTemplate.exchange(
-                        "http://employeeservice/v1/employees/{empId}",
+                        "http://employee-service/v1/employees/{empId}",
                         HttpMethod.GET,
                         null, Employee.class, empId);
 
