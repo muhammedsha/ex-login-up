@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 public class LoginServiceApplication {
     
     @LoadBalanced
