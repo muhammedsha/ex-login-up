@@ -35,11 +35,11 @@
 		<plugin>
 			<groupId>com.spotify</groupId>
 			<artifactId>docker-maven-plugin</artifactId>
-			<version>1.0.0</version>
+			<version>0.4.10</version>
 			<configuration>
 				<baseImage>java</baseImage>
 				<imageName>example</imageName>
-				</configuration>
+			</configuration>
 		</plugin>
 	</plugins>
     </build>

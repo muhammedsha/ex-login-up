@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Edgware.BUILD-SNAPSHOT</spring-cloud.version>
-        <start-class>com.notix.ConfgServerApplication</start-class>
+        <start-class>com.notix.ConfigServerApplication</start-class>
 	<docker.image.name>notix/configserver</docker.image.name>
 	<docker.image.tag>n1</docker.image.tag>
     </properties>

@@ -11,3 +11,10 @@ eureka:
       
 server:
     port: 8005
+    
+spring:
+  application:
+    name: loginservice
+  profiles:
+    active:
+      default
