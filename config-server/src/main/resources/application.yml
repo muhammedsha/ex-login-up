@@ -2,7 +2,7 @@
 ---
 spring:
     application:
-        name: config-server
+        name: configserver
 eureka:
   instance:
     preferIpAddress: true
