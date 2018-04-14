@@ -3,8 +3,6 @@
 spring:
    
     profiles:
-    active:
-      default
-    cloud:
-    config:
-      enabled: true
+        active:
+            default
+  
