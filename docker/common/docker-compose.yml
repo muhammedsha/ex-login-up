@@ -17,6 +17,18 @@ services:
             EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
             EUREKASERVER_PORT: "8761"
             ENCRYPT_KEY:       "IMSYMMETRIC"
+            
+    zuulserver:
+        image: notix/zuulserver:n1
+        ports:
+            - "5555:5555"
+        environment:
+            PROFILE: "default"
+            SERVER_PORT: "5555"
+            CONFIGSERVER_PORT: 8888
+            EUREKASERVER_PORT: 8761
+            CONFIGSERVER_URI: "http://configserver:8888"
+            EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
     employeeservice:
         image: notix/employeeservice:n1
@@ -29,11 +41,13 @@ services:
             EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
             EUREKASERVER_PORT:   "8761"
             CONFIGSERVER_PORT:   "8888"
+            ZUULSERVER_PORT:     "5555"
 
             ENCRYPT_KEY:       "IMSYMMETRIC"
         links:
             - configserver
             - eurekaserver
+            - zuulserver
 
     empservice:
         image: notix/empservice:n1
@@ -46,11 +60,13 @@ services:
             EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
             EUREKASERVER_PORT:   "8761"
             CONFIGSERVER_PORT:   "8888"
+            ZUULSERVER_PORT:     "5555"
 
             ENCRYPT_KEY:       "IMSYMMETRIC"
         links:
             - configserver
             - eurekaserver
+            - zuulserver
 
     loginservice:
         image: notix/loginservice:n1
@@ -63,8 +79,10 @@ services:
             EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
             EUREKASERVER_PORT:   "8761"
             CONFIGSERVER_PORT:   "8888"
+            ZUULSERVER_PORT:     "5555"
 
             ENCRYPT_KEY:       "IMSYMMETRIC"
         links:
             - configserver
             - eurekaserver
+            - zuulserver
