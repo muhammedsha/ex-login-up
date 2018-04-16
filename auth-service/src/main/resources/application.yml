@@ -18,3 +18,7 @@ eureka:
 server:
   contextPath:   /auth
   port: 8901
+spring:
+  application:
+    name: authservice
+  
