@@ -8,6 +8,7 @@ package com.notix.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,21 @@ public class WebSecurityConfigure extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsServiceBean() throws Exception {
         return super.userDetailsServiceBean();
     }
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.requestMatchers()
+                .antMatchers("/login", "/oauth/authorize")
+                .and()
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .permitAll();
+    }
+
 
 
     @Override

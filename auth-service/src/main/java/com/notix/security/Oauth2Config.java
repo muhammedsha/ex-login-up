@@ -25,6 +25,13 @@ public class Oauth2Config extends AuthorizationServerConfigurerAdapter{
 
     @Autowired
     private UserDetailsService userDetailsService;
+    /*
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+
+        security.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
+    }*/
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
