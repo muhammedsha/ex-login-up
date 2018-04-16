@@ -23,6 +23,18 @@ spring:
       enabled: true
       
 security:
- oauth2:
-  resource:
-    userInfoUri: http://localhost:8901/auth/user
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: clientId
+      clientSecret: secretcode
+      accessTokenUri: http://localhost:8901/auth/oauth/token
+      userAuthorizationUri: http://localhost:8901/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8901/auth/user      
+
+#security:
+ #oauth2:
+  #resource:
+   # userInfoUri: http://localhost:8901/auth/user
