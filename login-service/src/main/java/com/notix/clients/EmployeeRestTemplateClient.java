@@ -30,7 +30,7 @@ public class EmployeeRestTemplateClient {
         logger.debug("In Login Service.getEmployee: {}", UserContext.getCorrelationId());
         ResponseEntity<Employee> restExchange =
                 restTemplate.exchange(
-                        "http://zuulserver:5555/employeeservice/v1/employees/{empId}",
+                        "http://zuulserver/employeeservice/v1/employees/{empId}",
                         HttpMethod.GET,
                         null, Employee.class, empId);
 
