@@ -17,3 +17,10 @@ eureka:
     defaultZone: http://localhost:8761/eureka/
     
 zuul.sensitiveHeaders: Cookie,Set-Cookie
+
+ #Setting logging levels
+logging:
+    level:
+      com.netflix: WARN
+      org.springframework.web: WARN
+      com.notix: DEBUG

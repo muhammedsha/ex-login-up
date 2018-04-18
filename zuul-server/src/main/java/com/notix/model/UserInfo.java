@@ -12,6 +12,9 @@ package com.notix.model;
 public class UserInfo {
     String employeeId;
 
+    public UserInfo() {
+    }
+
     public String getEmployeeId() {
         return employeeId;
     }

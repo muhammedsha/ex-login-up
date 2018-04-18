@@ -24,10 +24,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
+@Component
 public class AuthenticationFilter extends ZuulFilter {
-    private static final int FILTER_ORDER =  2;
-    private static final boolean  SHOULD_FILTER=false;
+    private static final int FILTER_ORDER =  1;
+    private static final boolean  SHOULD_FILTER=true;
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
 
     @Autowired
@@ -38,7 +38,7 @@ public class AuthenticationFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
-        return filterUtils.PRE_FILTER_TYPE;
+        return FilterUtils.PRE_FILTER_TYPE;
     }
 
     @Override
@@ -52,11 +52,7 @@ public class AuthenticationFilter extends ZuulFilter {
     }
 
     private boolean isAuthTokenPresent() {
-        if (filterUtils.getAuthToken() !=null){
-            return true;
-        }
-
-        return false;
+        return filterUtils.getAuthToken() !=null;
     }
 
     private UserInfo isAuthTokenValid(){
@@ -64,7 +60,7 @@ public class AuthenticationFilter extends ZuulFilter {
         try {
             restExchange =
                     restTemplate.exchange(
-                            "http://authservice/validate/{token}",
+                            "http://authservice/auth/oauth2/{token}",
                             HttpMethod.GET,
                             null, UserInfo.class, filterUtils.getAuthToken());
         }
@@ -106,11 +102,11 @@ public class AuthenticationFilter extends ZuulFilter {
            logger.debug("Authentication token is valid.");
             return null;
         }
-
+        else{
         logger.debug("Authentication token is not valid.");
         ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
         ctx.setSendZuulResponse(false);
-
+        }
         return null;
 
     }
