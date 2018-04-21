@@ -7,6 +7,7 @@ package com.notix.clients;
 
 import com.notix.model.Employee;
 import com.notix.utils.UserContext;
+import com.notix.utils.UserContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,11 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class EmployeeRestTemplateClient {
     @Autowired
-    OAuth2RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     private static final Logger logger = LoggerFactory.getLogger(EmployeeRestTemplateClient.class);
     public Employee getEmployee(String empId){
-        logger.debug("In Login Service.getEmployee: {}", UserContext.getCorrelationId());
+        logger.debug(">>> In Licensing Service.getOrganization: {}. Thread Id: {}", UserContextHolder.getContext().getCorrelationId(), Thread.currentThread().getId());
         ResponseEntity<Employee> restExchange =
                 restTemplate.exchange(
                         "http://employeeservice/v1/employees/{empId}",
